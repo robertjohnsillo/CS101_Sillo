@@ -1,0 +1,126 @@
+---
+title: "Lab Activity"
+author: "Robert John Sillo"
+date: "2026-09-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Part 1 - Arithmetic Operations
+
+```{r}
+a <- 17
+b <- 5
+
+result1 <- a + b
+result2 <- a - b
+result3 <- a * b
+result4 <- a / b
+result5 <- a %% b
+result6 <- a %/% b
+result1
+result2
+result3
+result4
+result5
+result6
+c <- 2 ^ 10
+c
+
+
+```
+1. The 17 / 5 you will get the remainder and the integer, while the 17 %% 5 you get the remainder and the 17 %/% 5 you willl get the integer
+2. my prediction is 1 and  3. Yes i am correct
+
+Part 2 - Basic Data Types
+
+```{r}
+x <- 42
+y <- 42L
+z <- "42"
+w <- TRUE
+v <- 3 + 2i
+
+typeof(x)
+typeof(y)
+typeof(z)
+typeof(w)
+typeof(v)
+class(x)
+class(y)
+class(z)
+class(w)
+class(v)
+mode(x)
+mode(y)
+mode(z)
+mode(w)
+mode(v)
+
+```
+3.the x just gives a number and the y has an L thats why it has a different data type
+4. Yes it is different. in the typeof() and class() the y is an integer
+
+
+Part 3 - Type Conversion
+```{r}
+num_string <- "123"
+as.numeric(num_string)
+typeof(num_string)
+class(num_string)
+mode(num_string)
+as.logical(0)
+as.logical(1)
+bad_string <- "hello123"
+as.numeric(bad_string)
+
+```
+
+5. R gives a warning instead of crashing so your entire script doesn't halt over a single bad value. In large datasets, turning unconvertible text or typos into NA allows R to finish processing the rest of your data without stopping your workflow. However, ignoring these warnings means invalid data silently turns into NA, which can corrupt downstream calculations, produce wrong averages, and secretly erase valid entries. Because the script keeps running, finding where the original bad value entered your code becomes much harder later on.
+
+6. Both as.logical(2) and as.logical(-1) will produce TRUE.
+
+R follows a straightforward rule when coercing numbers to logical values: zero represents FALSE, while any non-zero number evaluates to TRUE. It does not matter whether the non-zero number is positive, negative, an integer, or a decimal—if it is not equal to zero, R treats it as true. The only exception is NA, which remains NA because its logical value is unknown.
+
+Part 4 - Strings, paste(), and paste0()
+```{r}
+first_name <- "Juan"
+last_name <- "Dela Cruz"
+
+print(first_name)
+print(last_name)
+cat(first_name, last_name, "\n")
+
+full_name <- paste(first_name, last_name)
+full_name
+
+paste0(first_name, last_name)
+
+paste(first_name, last_name, sep = "-")
+
+age <- 21
+paste0(full_name, " is ", age, " years old.")
+```
+7. paste() and paste0() produced different results because paste() defaults to using a single space separator (sep = " ") between combined elements, whereas paste0() is an explicit shortcut for paste() with no separator (sep = ""). Consequently, paste(first_name, last_name) inserts a space ("Juan Dela Cruz"), while paste0(first_name, last_name) connects them directly without spacing ("JuanDela Cruz").
+
+8. Combining age with character strings in paste0() did not cause an error because paste0() automatically performs implicit coercion on non-character arguments. Internally, R coerces numeric values like age <- 21 into character types ("21") before concatenating them. This directly mirrors the explicit type conversions from Part C, except R handles the conversion automatically behind the scenes to streamline string construction.
+
+Past E - Critical Thinking Challenge
+```{r}
+as.numeric("5") + 5
+```
+9. R requires explicit conversion because it strictly checks data types to avoid error. The + sign in R is built only for numbers, not text. If R tried to guess what string numbers meant, it could easily hide mistakes in your data—like accidentally adding a word or typo instead of catching the error right away.
+
+10.The column was likely saved as text instead of numbers because the text file had non-number characters in it. Since R cannot add words together, sum() threw an error. To fix this, first run class() to confirm the column is text. Then, use as.numeric() to turn it into numbers, watch out for any warnings about missing values (NA), clean up any bad text entries, and finally run sum() again.
+
+Conclusion
+R uses strict data types—such as numeric, character, and logical—and applies specific rules when doing math or combining them. When mixing types, R either performs implicit coercion or throws an error if an operation (like arithmetic on text) is invalid. Checking types with typeof() or class() ensures your variables are in the correct format before performing calculations. Using conversion functions like as.numeric() prevents script crashes, avoids silent NA data corruption, and ensures your downstream analysis gives accurate results.
+
+
+
+
+
+
