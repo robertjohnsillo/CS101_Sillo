@@ -1,0 +1,64 @@
+---
+title: "Exercise#4_Sillo"
+author: "Robert John Sillo"
+date: "2026-10-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Part 1 - Creating Vectors and List
+#1.
+```{r}
+age <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 37, 43, 53, 41, 51, 35, 24,33, 41, 53, 40, 18, 44, 38, 41, 48, 27, 39, 19, 30, 61, 54, 58, 26, 18) 
+age
+length(age)
+min(age)
+max(age)
+age[c(13:18, 33:35)]
+age[-c(10, 20, 30, 40)]
+age[c(4, 14, 24, 44)] <- 0
+age[c(4, 14, 24, 44)]
+```
+
+#2.
+```{r}
+data(rivers)
+length(rivers)   
+sum(rivers)      
+mean(rivers)   
+median(rivers)  
+var(rivers)     
+sd(rivers)       
+min(rivers)     
+max(rivers)
+rivers_stats <- c(
+  length = length(rivers),
+  sum    = sum(rivers),
+  mean   = mean(rivers),
+  median = median(rivers),
+  var    = var(rivers),
+  sd     = sd(rivers),
+  min    = min(rivers),
+  max    = max(rivers)
+)
+rivers_stats
+rank <- 1:25
+rank <- 1:25
+celebrity <- c("Tom Cruise", "Rolling Stones", "Oprah Winfrey", "U2", "Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman", "Phil Mickelson", "J.K Rowling", "Bradd Pitt", "Peter Jackson", "Dr. Phil McGraw", "Jay Lenon", "Celine Dion", "Kobe Bryant")
+pay <- c(67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 75, 25, 39, 45, 32, 40, 31)
+length(rank); length(celebrity); length(pay)  
+i <- which(celebrity == "J.K. Rowling")  
+rank[i] <- 15
+pay[i]  <- 90
+rank[i]; pay[i]  
+veg <- list("carrot", "cabbage", "eggplant", "squash", "okra", "spinach", "tomato", "onion", "potato", "broccoli")
+veg <- append(veg, list("cucumber", "radish"), after = length(veg))
+unlist(veg)
+length(veg)
+
+```
+
+
