@@ -1,0 +1,88 @@
+---
+title: "RExercise#5_SIllo"
+author: "Robert John Sillo"
+date: "2026-10-26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+#Part A
+m1 <- matrix(1:9, nrow = 3, ncol = 3)
+print(m1)
+m2 <- matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)
+print(m2)
+scores <- matrix(c(88, 92, 79, 95, 84, 90), nrow = 2, ncol = 3, byrow = TRUE)
+rownames(scores) <- c("Quiz1", "Quiz2")
+colnames(scores) <- c("Ana", "Ben", "Cid")
+```
+1. By default, R fills a matrix top-to-bottom down each column. Adding byrow = TRUE changes it to fill left-to-right across each row.
+
+2. When an 8-number sequence goes into a 3 times 3 matrix (9 cells), R fills the missing 9th slot by recycling the first value (1).
+
+```{r}
+#Part B
+print(scores[1, 2])
+print(scores[1, ])
+print(scores[, "Ben"])
+print(scores[scores >= 90])
+class(scores[1, ])
+class(scores[, "Ben"])
+```
+3. class(scores[1, ]), class(scores[, "Ben"])
+Because extracting a single row or column leaves only one dimension, R automatically converts it into a basic vector.
+4. scores[1, ] uses positional indexing to select a specific row while retaining the matrix's column structure, allowing R to keep and display the column names.
+
+```{r}
+#Part C
+a <- matrix(1:4, nrow = 2)
+b <- matrix(5:8, nrow = 2)
+print(dim(scores))
+print(nrow(scores))
+print(ncol(scores))
+scores_t <- t(scores)
+print(scores_t)
+print(dim(scores_t))
+print(a + b)
+print(a * b)
+print(a %*% b)
+```
+5. Element-wise multiplication (a * b) multiplies matching cells in two matrices directly. Matrix multiplication (a %*% b) computes each cell by taking the dot product of an entire row from a and an entire column from b.
+6. Transposing flips the matrix: former row names (Quiz1, Quiz2) become the new column names, and former column names (Ana, Ben, Cid) become the new row names.
+
+```{r}
+#Part D
+scores_v2 <- cbind(scores, Dex = c(85, 91))
+print(scores_v2)
+scores_v3 <- rbind(scores, Quiz3 = c(80, 88, 93))
+print(scores_v3)
+cbind(scores, c(85, 91, 100))
+```
+7. cbind(scores, c(85, 91, 100))
+R rejects the operation because adding a new column to a 2-row matrix requires a vector with exactly 2 values to match the row count.
+8. Use rbind() when tracking new records over time with fixed variables—such as adding a new week (row) to a tracker with fixed days (columns).
+```{r}
+#Part E
+arr <- array(1:12, dim = c(2, 3, 2))
+print(arr)
+print(arr[1, 2, 2])
+print(arr[, , 1])
+print(dim(arr))
+```
+9. dim(arr) returns c(2, 3, 2), mapping to arr[row, col, layer]: 2 rows (vertical entries), 3 columns (horizontal entries), and 2 layers (stacked 2×3 slices).
+10. A 3D array naturally fits monthly sales data: rows are products, columns are stores, and layers are months (e.g., January in layer 1, February in layer 2). A 2D matrix only captures a single month's snapshot, whereas the third dimension lets you track multiple months simultaneously.
+```{r}
+#Part F
+class_a <- matrix(c(85, 90, 78, 92), nrow = 2, byrow = TRUE, dimnames = list(c("S1", "S2"), c("Midterm", "Final")))
+class_b <- matrix(c(88, 84, 95, 91), nrow = 2, byrow = TRUE, dimnames = list(c("S3", "S4"), c("Midterm", "Final")))
+all_students <- rbind(class_a, class_b)
+print(all_students)
+print(rowMeans(all_students))
+```
+11. rbind() was the correct choice because class_a and class_b share the same column names (Midterm and Final). Matching columns mean both matrices track the same variables, so appending rows adds new student records rather than new measurements.
+12. Combine the 5 matrices by stacking them consecutively with rbind(), then use dim() to verify that the column count remains 2 while the total row count equals the sum of rows from all 5 matrices.
+
+Conclusion
+R fills column-first by default, converts single rows/columns into basic vectors, and distinguishes between element-wise ( * ) and dot-product ( % * % ) multiplication. Combining datasets relies on shared dimensions—stacking observations with rbind() for shared columns or adding variables with cbind() for shared rows—while 3D arrays extend this structure to track layered snapshots over time.
