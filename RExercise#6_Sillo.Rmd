@@ -1,0 +1,74 @@
+---
+title: "RExercise#6_SIllo"
+author: "Robert John Sillo"
+date: "2026-10-26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+#Part A
+name <- c("Ana", "Ben", "Cid", "Dex", "Eli")
+age <- c(20, 21, 19, 22, 20)
+passed <- c(TRUE, TRUE, FALSE, TRUE, FALSE)
+students <- data.frame(name = name, age = age, passed = passed)
+print(students)
+print(typeof(students$name))
+print(class(students$name))
+courses <- data.frame(
+course_code = c("IS101", "IS102", "IS103"), units = c(3, 3, 2), instructor  = c("Dr. P. Reyes", "Dr. R. Santos", "Dr. S. Cruz"))
+print(courses)
+```
+1. A data frame is a rigid 2D grid where every column must have the same number of rows. Mismatched lengths break this structure, causing R to throw an error.
+2. A data frame is a list of equal-length vectors under the hood, which allows each column to have its own data type (like text, numbers, or logicals) while keeping the overall table structure.
+```{r}
+#Part B
+print(students$age)
+print(students[["age"]])
+print(students["age"])
+print(class(students$age))
+print(class(students[["age"]]))
+print(class(students["age"]))
+print(students[2, ])
+print(students[3, "name"])
+print(students[students$passed == TRUE, ])
+print(students[students$passed == TRUE & students$age > 19, ])
+```
+3.Using single brackets [ ] keeps the data frame wrapper intact (returning a 1-column data frame), whereas $ extracts the column directly as a raw vector (returning its underlying data type, like "numeric").
+4. Using & performs an element-wise "AND," returning TRUE only when both conditions are met simultaneously. Switching to | performs an "OR," returning TRUE if a student meets either condition (passing or being over 19).
+```{r}
+#Part C
+str(students)
+print(dim(students))
+print(nrow(students))
+print(ncol(students))
+print(names(students))
+summary(students)
+```
+5. summary() adapts to each data type: it calculates numeric statistics (min, quartiles, mean, max) for numeric columns, tallies TRUE/FALSE counts for logicals, and lists basic metadata (length, class, mode) for character strings where mathematical summaries don't apply.
+6. str() is best for inspecting data structure (dimensions, column types, and sample values), while summary() is best for statistical overview (data ranges, distributions, and value counts).
+```{r}
+#Part D
+students$year_level <- c(2, 3, 1, 4, 2)
+print(students)
+students$passed <- NULL
+print(students)
+print(students[order(students$age), ])
+print(students[order(students$age, decreasing = TRUE), ])
+```
+7. Running students$passed == TRUE after dropping the passed column evaluates NULL == TRUE, returning an empty logical(0) vector. This fails to filter any rows and usually breaks subsequent code.
+8. order(students$age) outputs the row indices sorted by age (e.g., c(3, 1, 5, 2, 4)). Passing these indices into the row slot of students[order(...), ] reorders the entire data frame row by row from youngest to oldest.
+```{r}
+#Part E
+grades <- data.frame(name    = c("Ana", "Ben", "Cid", "Dex", "Eli"), midterm = c(85, 78, 92, 88, 70), final   = c(90, 82, 95, 84, 75))
+grades$average <- (grades$midterm + grades$final) / 2
+print(grades)
+grades$remarks <- ifelse(grades$average >= 75, "Passed", "Failed")
+print(grades[grades$remarks == "Failed", c("name", "average")])
+print(grades)
+```
+9. grades$final - grades$midterm creates a change column (negative for drops, positive for gains), while a logical column like grades$midterm < 75 flags low scores. Sorting by these new columns immediately highlights struggling and improving students.
+Conclusion
+R data frames are list-based grids of equal-length vectors that preserve individual column data types. Use $ to extract raw vectors for filtering and [ ] to keep the tabular structure intact. Structural checks rely on str(), statistical overviews on summary(), and data manipulation on combining vector math, logical operators, and order().
