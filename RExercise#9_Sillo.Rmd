@@ -1,0 +1,81 @@
+---
+title: "RExercise#9_SIllo"
+author: "Robert John Sillo"
+date: "2026-11-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Part A
+```{r}
+#Question AA1
+shoe_size <- c(6.5, 9.0, 8.5, 8.5, 10.5, 7.0, 9.5, 9.0, 13.0, 7.5,
+               10.5, 8.5, 12.0, 10.5, 13.0, 11.5, 8.5, 5.0, 10.0, 6.5,
+               7.5, 8.5, 10.5, 8.5, 10.5, 11.0, 9.0, 13.0)
+height <- c(66.0, 68.0, 64.5, 65.0, 70.0, 64.0, 70.0, 71.0, 72.0, 64.0,
+            74.5, 67.0, 71.0, 71.0, 77.0, 72.0, 59.0, 62.0, 72.0, 66.0,
+            64.0, 67.0, 73.0, 69.0, 72.0, 70.0, 69.0, 70.0)
+gender <- c("F", "F", "F", "F", "M", "F", "F", "M", "M", "F",
+            "M", "F", "M", "M", "M", "M", "F", "F", "M", "F",
+            "F", "M", "M", "F", "M", "M", "M", "M")
+shoesize <- data.frame(shoe_size, height, gender)
+write.csv(shoesize, "shoesize.csv", row.names = FALSE)
+shoesize
+
+#Question AB1
+shoesize <- read.csv("shoesize.csv")
+tail(shoesize, 5)
+#Question AC1
+str(shoesize)
+#Question AD1
+dim(shoesize)
+#Question AE1
+summary(shoesize)
+
+#str() tells you what the data looks like, while summary() tells you what the data contains statistically.
+
+#Question AF1
+males   <- shoesize[shoesize$gender == "M", ]
+females <- shoesize[shoesize$gender == "F", ]
+males
+females
+
+#Question AG1
+mean(shoesize$shoe_size)
+mean(shoesize$height)
+#Question AH1
+cor(shoesize$shoe_size, shoesize$height)
+
+#Yes, there is a moderate to strong positive relationship. A correlation of 0.66 indicates that as shoe size increases, height tends to increase as well.
+
+#Question A2
+shoesize$gender <- factor(shoesize$gender)
+levels(shoesize$gender)
+shoesize$gender
+
+#Question A3
+#When knitting, R Markdown uses the .Rmd file's location as the working directory, allowing relative file paths like read.csv("shoesize.csv") to load data reliably without relying on the console's working directory.
+
+#Question A4
+str(shoesize)
+
+#gender is properly typed as a factor, while shoe_size and height are numeric. If numeric columns are mistakenly read as character data (e.g., due to stray characters like "8.5a"), mathematical operations such as mean(), cor(), or order() will fail.
+
+#Question A5
+#head() only displays the first 6 rows, masking issues at the end of a dataset—such as trailing blank rows, repeated footer headers, corrupted final entries, or incomplete file imports.
+#Question AA6
+cor(shoesize$shoe_size, shoesize$height)
+#Question AB6
+shoesize[shoesize$shoe_size >= 11, ]
+
+#Question A7
+# Mean height by gender
+mean(males$height)
+mean(females$height)
+# Mean shoe size by gender
+mean(males$shoe_size)
+mean(females$shoe_size)
+#Yes. The overall correlation of 0.66 is partly driven by gender acting as a grouping factor; males cluster at high shoe size + high height, females at low shoe size + low height.
+```
