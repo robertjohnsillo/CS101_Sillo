@@ -1,0 +1,94 @@
+---
+title: "RExercise#8_SIllo"
+author: "Robert John Sillo"
+date: "2026-11-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Part A
+```{r}
+#Question AA1
+scores <- c(88, 72, 95, 60, 83, 91)
+names(scores) <- c("Ana", "Ben", "Carl", "Dina", "Eve", "Felix")
+scores
+
+#Question AB1
+sort(scores)                        
+sort(scores, decreasing = TRUE)
+
+#Question AC1
+sorted_asc <- sort(scores)
+print(sorted_asc)
+
+#Question AD1
+subjects   <- c("Science", "Math", "English", "Filipino", "PE")
+incomplete <- c(85, NA, 90, 70, NA, 95)
+
+#Question AE1
+sort(subjects)
+
+#Question AF1
+sort(incomplete)
+
+#Question A2
+#Yes, exactly as demonstrated in Part A3, the names (such as Ana, Ben, and Carl) remained properly synchronized with their respective scores throughout the sorting process.
+
+#Question A3
+#When you use sort(incomplete)[1] to find the minimum score in a dataset containing missing values, R automatically and silently eliminates the NA entries, returning 70 without providing any warning.
+
+#Question A4
+order(scores)
+sort(scores)
+
+#Question A5
+name    <- c("Ana", "Ben", "Cid", "Dex", "Eli", "Fay", "Gio")
+score   <- c(78, 92, 85, 92, 67, 88, 74)
+section <- c("A", "B", "A", "B", "A", "B", "A")
+students <- data.frame(name, score, section)
+students
+
+#Question A5A
+students[order(students$score), ]
+#Question A5B
+students[order(students$score, decreasing = TRUE), ]
+
+#Question A6
+#Unlike sort(), R's order() function outputs the index positions of elements from smallest to largest rather than the values themselves—meaning an output like 4 indicates the smallest value is located at position 4 (Dina = 60), while 2 points to the next-smallest value at position 2 (Ben = 72).
+
+#Question A7
+#sort() fails on data frames because it only handles single vectors. Use order() instead—it returns row index positions, allowing you to reorder all columns simultaneously using students[order(...), ].
+
+#Question A8
+scores <- c(78, 92, 85, 92, 67, 88, 74)
+names(scores) <- c("Ana", "Ben", "Cid", "Dex", "Eli", "Fay", "Gio")
+cbind(scores, rank(scores))
+
+#Question A8A
+#Both Ben and Dex received rank 6.5.
+
+#Question A8B
+#Ben and Dex both scored 92, placing 6th and 7th in ascending order. Since rank() defaults to average ranking for ties, both receive a rank of 6.5.
+
+#Question A8C Dataframe
+sales <- data.frame(
+  employee   = c("Rey", "Sam", "Tin", "Uma", "Val"),
+  units_sold = c(120, 145, 145, 98, 130)
+)
+sales$rank <- rank(-sales$units_sold)
+sales
+
+#Question A8D Dataframe
+sales[order(sales$units_sold, decreasing = TRUE), ]
+
+#Question A9
+#order() and rank() serve distinct purposes. While order() simply returns index positions to rearrange rows—arbitrarily assigning sequential indices (1 and 2) to tied values like Sam and Tin's 145 units—rank() mathematically handles ties by averaging their positions (giving both 1.5) to produce a true standing value you can store as a column.
+
+```
+
+
+
+
+
