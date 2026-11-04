@@ -87,8 +87,3 @@ sales[order(sales$units_sold, decreasing = TRUE), ]
 #order() and rank() serve distinct purposes. While order() simply returns index positions to rearrange rows—arbitrarily assigning sequential indices (1 and 2) to tied values like Sam and Tin's 145 units—rank() mathematically handles ties by averaging their positions (giving both 1.5) to produce a true standing value you can store as a column.
 
 ```
-
-
-
-
-
