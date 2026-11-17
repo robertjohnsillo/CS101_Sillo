@@ -11,9 +11,9 @@
 
 <meta name="author" content="Robert John Sillo" />
 
-<meta name="date" content="2026-11-11" />
+<meta name="date" content="2026-11-17" />
 
-<title>RPractical</title>
+<title>RPractical_SIllo</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,15 +350,18 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">RPractical</h1>
+<h1 class="title toc-ignore">RPractical_SIllo</h1>
 <h4 class="author">Robert John Sillo</h4>
-<h4 class="date">2026-11-11</h4>
+<h4 class="date">2026-11-17</h4>
 
 </div>
 
 
-<pre class="r"><code>#Question A1 
-v &lt;- c(seq(5, 50, by = 5))
+<div id="part-a-basic-operations" class="section level1">
+<h1>Part A: Basic Operations</h1>
+<div id="a1-sequence-creation" class="section level2">
+<h2>A1: Sequence Creation</h2>
+<pre class="r"><code>v &lt;- seq(5, 50, by = 5)
 v</code></pre>
 <pre><code>##  [1]  5 10 15 20 25 30 35 40 45 50</code></pre>
 <pre class="r"><code>length(v)</code></pre>
@@ -367,119 +370,397 @@ v</code></pre>
 <pre><code>## [1] 275</code></pre>
 <pre class="r"><code>mean(v)</code></pre>
 <pre><code>## [1] 27.5</code></pre>
-<pre class="r"><code>#Question A2
-w &lt;- c(1, 2, 3)
-rep(w, times = 4)</code></pre>
+</div>
+<div id="a2-vector-repetitions" class="section level2">
+<h2>A2: Vector Repetitions</h2>
+<pre class="r"><code>v &lt;- rep(c(1, 2, 3), times = 4)
+z &lt;- rep(c(1, 2, 3), each = 4)
+v</code></pre>
 <pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
-<pre class="r"><code>z &lt;- c(1, 2, 3)
-rep(z, each = 4)</code></pre>
+<pre class="r"><code>z</code></pre>
 <pre><code>##  [1] 1 1 1 1 2 2 2 2 3 3 3 3</code></pre>
-<pre class="r"><code>#Question A3
-a &lt;- 17
-b &lt;- 5
-c &lt;- 2 
-d &lt;- 10
-e &lt;- 144
-
-total1 &lt;- a %% b
-total1</code></pre>
+</div>
+<div id="a3-arithmetic-computations" class="section level2">
+<h2>A3: Arithmetic Computations</h2>
+<pre class="r"><code>17 %% 5       # Remainder of 17 divided by 5</code></pre>
 <pre><code>## [1] 2</code></pre>
-<pre class="r"><code>total2 &lt;- a/b
-total2</code></pre>
-<pre><code>## [1] 3.4</code></pre>
-<pre class="r"><code>total3 &lt;- c^d
-total3</code></pre>
+<pre class="r"><code>17 %/% 5      # Integer division of 17 by 5</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>2^10          # 2 to the power of 10</code></pre>
 <pre><code>## [1] 1024</code></pre>
-<pre class="r"><code>total4 &lt;- sqrt(e)
-total4</code></pre>
+<pre class="r"><code>sqrt(144)     # Square root of 144</code></pre>
 <pre><code>## [1] 12</code></pre>
-<pre class="r"><code>total5 &lt;- round(pi, digits = 3)
-total5</code></pre>
+<pre class="r"><code>round(pi, 3)  # Pi rounded to 3 decimal places</code></pre>
 <pre><code>## [1] 3.142</code></pre>
-<pre class="r"><code>#Question A4 
-a &lt;- c(2, 4, 6, 8)
-b &lt;- c(1, 3, 5 ,7)
-result1 &lt;- a+b
-result1</code></pre>
+</div>
+<div id="a4-vector-operations-and-dot-product" class="section level2">
+<h2>A4: Vector Operations and Dot Product</h2>
+<pre class="r"><code>a &lt;- c(2, 4, 6, 8)
+b &lt;- c(1, 3, 5, 7)
+
+a + b</code></pre>
 <pre><code>## [1]  3  7 11 15</code></pre>
-<pre class="r"><code>result2 &lt;- a*b
-result2</code></pre>
+<pre class="r"><code>a * b</code></pre>
 <pre><code>## [1]  2 12 30 56</code></pre>
-<pre class="r"><code>result3 &lt;- a&gt;b
-result3</code></pre>
+<pre class="r"><code>a &gt; b</code></pre>
 <pre><code>## [1] TRUE TRUE TRUE TRUE</code></pre>
-<pre class="r"><code>result4 &lt;- 
-prod &lt;- sum(a*b)
-prod</code></pre>
+<pre class="r"><code>sum(a * b) # Dot product</code></pre>
 <pre><code>## [1] 100</code></pre>
-<pre class="r"><code>#Question A5
-mode(42)</code></pre>
+</div>
+<div id="a5-string-formatting-and-data-types" class="section level2">
+<h2>A5: String Formatting and Data Types</h2>
+<pre class="r"><code># String creation
+paste(&quot;Student&quot;, 1:3, sep = &quot;-&quot;)</code></pre>
+<pre><code>## [1] &quot;Student-1&quot; &quot;Student-2&quot; &quot;Student-3&quot;</code></pre>
+<pre class="r"><code># Data types check
+class(42)</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="r"><code>mode(42L)</code></pre>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="r"><code>mode(&quot;42&quot;)</code></pre>
+<pre class="r"><code>class(42L)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="r"><code>class(&quot;42&quot;)</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>mode(42i)</code></pre>
-<pre><code>## [1] &quot;complex&quot;</code></pre>
-<pre class="r"><code>paste(&quot;Student-1&quot;, &quot;Student-2&quot;, &quot;Student-3&quot;)</code></pre>
-<pre><code>## [1] &quot;Student-1 Student-2 Student-3&quot;</code></pre>
-<pre class="r"><code>#Question B1
-id &lt;- c(1, 2, 3, 4, 5, 6, 7, 8)
-name &lt;- c(&quot;Alice&quot;, &quot;Bruno&quot;, &quot;Chen&quot;, &quot;Dana&quot;, &quot;Elif&quot;, &quot;Farid&quot;, &quot;Grace&quot;, &quot;Hiro&quot;)
-sex &lt;- c(&quot;F&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;M&quot;)
-section &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;C&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot;, &quot;B&quot;)
-midterm &lt;- c(78, 85, 92, 67, 74, 88, 95, 59)
-final &lt;- c(82, 79, 96, 71, 80, 91, 93, 65)
-attendance &lt;- c(95, 88, 100, 72, 90, 85, 98, 60)
-df &lt;- data.frame(id = id, sex = sex, section = section, midterm = midterm, final = final, attendance = attendance)
-df</code></pre>
-<pre><code>##   id sex section midterm final attendance
-## 1  1   F       A      78    82         95
-## 2  2   M       B      85    79         88
-## 3  3   M       A      92    96        100
-## 4  4   F       C      67    71         72
-## 5  5   F       B      74    80         90
-## 6  6   M       C      88    91         85
-## 7  7   F       A      95    93         98
-## 8  8   M       B      59    65         60</code></pre>
-<pre class="r"><code>str(df)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    8 obs. of  6 variables:
-##  $ id        : num  1 2 3 4 5 6 7 8
+<pre class="r"><code>class(411)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>class(TRUE)</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+</div>
+</div>
+<div id="part-b-data-frames-and-conditional-statements" class="section level1">
+<h1>Part B: Data Frames and Conditional Statements</h1>
+<div id="b1-create-initial-data-frame" class="section level2">
+<h2>B1: Create Initial Data Frame</h2>
+<pre class="r"><code>students &lt;- data.frame(
+  id = 1:8,
+  name = c(&quot;Alice&quot;, &quot;Bruno&quot;, &quot;Chen&quot;, &quot;Dana&quot;, &quot;Elif&quot;, &quot;Farid&quot;, &quot;Grace&quot;, &quot;Hiro&quot;),
+  sex = c(&quot;F&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;M&quot;),
+  section = c(&quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;C&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot;, &quot;B&quot;),
+  midterm = c(78, 85, 92, 67, 74, 88, 95, 59),
+  final = c(82, 79, 96, 71, 80, 91, 93, 65),
+  attendance = c(95, 88, 100, 72, 90, 85, 98, 60),
+  stringsAsFactors = FALSE
+)
+students</code></pre>
+<pre><code>##   id  name sex section midterm final attendance
+## 1  1 Alice   F       A      78    82         95
+## 2  2 Bruno   M       B      85    79         88
+## 3  3  Chen   M       A      92    96        100
+## 4  4  Dana   F       C      67    71         72
+## 5  5  Elif   F       B      74    80         90
+## 6  6 Farid   M       C      88    91         85
+## 7  7 Grace   F       A      95    93         98
+## 8  8  Hiro   M       B      59    65         60</code></pre>
+</div>
+<div id="b2-structure-and-summary" class="section level2">
+<h2>B2: Structure and Summary</h2>
+<pre class="r"><code>str(students)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    8 obs. of  7 variables:
+##  $ id        : int  1 2 3 4 5 6 7 8
+##  $ name      : chr  &quot;Alice&quot; &quot;Bruno&quot; &quot;Chen&quot; &quot;Dana&quot; ...
 ##  $ sex       : chr  &quot;F&quot; &quot;M&quot; &quot;M&quot; &quot;F&quot; ...
 ##  $ section   : chr  &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;C&quot; ...
 ##  $ midterm   : num  78 85 92 67 74 88 95 59
 ##  $ final     : num  82 79 96 71 80 91 93 65
 ##  $ attendance: num  95 88 100 72 90 85 98 60</code></pre>
-<pre class="r"><code>dim(df)</code></pre>
-<pre><code>## [1] 8 6</code></pre>
-<pre class="r"><code>col(df)</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
-## [1,]    1    2    3    4    5    6
-## [2,]    1    2    3    4    5    6
-## [3,]    1    2    3    4    5    6
-## [4,]    1    2    3    4    5    6
-## [5,]    1    2    3    4    5    6
-## [6,]    1    2    3    4    5    6
-## [7,]    1    2    3    4    5    6
-## [8,]    1    2    3    4    5    6</code></pre>
-<pre class="r"><code>summary(df)</code></pre>
-<pre><code>##        id              sex         section     midterm          final      
-##  Min.   :1.00   Length   :8   Length   :8   Min.   :59.00   Min.   :65.00  
-##  1st Qu.:2.75   N.unique :2   N.unique :3   1st Qu.:72.25   1st Qu.:77.00  
-##  Median :4.50   N.blank  :0   N.blank  :0   Median :81.50   Median :81.00  
-##  Mean   :4.50   Min.nchar:1   Min.nchar:1   Mean   :79.75   Mean   :82.12  
-##  3rd Qu.:6.25   Max.nchar:1   Max.nchar:1   3rd Qu.:89.00   3rd Qu.:91.50  
-##  Max.   :8.00                               Max.   :95.00   Max.   :96.00  
-##    attendance    
-##  Min.   : 60.00  
-##  1st Qu.: 81.75  
-##  Median : 89.00  
-##  Mean   : 86.00  
-##  3rd Qu.: 95.75  
-##  Max.   :100.00</code></pre>
-<pre class="r"><code>colMeans(df[, c(&quot;midterm&quot;, &quot;final&quot;)])</code></pre>
-<pre><code>## midterm   final 
-##  79.750  82.125</code></pre>
+<pre class="r"><code>dim(students)</code></pre>
+<pre><code>## [1] 8 7</code></pre>
+<pre class="r"><code>colnames(students)</code></pre>
+<pre><code>## [1] &quot;id&quot;         &quot;name&quot;       &quot;sex&quot;        &quot;section&quot;    &quot;midterm&quot;   
+## [6] &quot;final&quot;      &quot;attendance&quot;</code></pre>
+<pre class="r"><code>summary(students)</code></pre>
+<pre><code>##        id              name          sex         section     midterm     
+##  Min.   :1.00   Length   :8   Length   :8   Length   :8   Min.   :59.00  
+##  1st Qu.:2.75   N.unique :8   N.unique :2   N.unique :3   1st Qu.:72.25  
+##  Median :4.50   N.blank  :0   N.blank  :0   N.blank  :0   Median :81.50  
+##  Mean   :4.50   Min.nchar:4   Min.nchar:1   Min.nchar:1   Mean   :79.75  
+##  3rd Qu.:6.25   Max.nchar:5   Max.nchar:1   Max.nchar:1   3rd Qu.:89.00  
+##  Max.   :8.00                                             Max.   :95.00  
+##      final         attendance    
+##  Min.   :65.00   Min.   : 60.00  
+##  1st Qu.:77.00   1st Qu.: 81.75  
+##  Median :81.00   Median : 89.00  
+##  Mean   :82.12   Mean   : 86.00  
+##  3rd Qu.:91.50   3rd Qu.: 95.75  
+##  Max.   :96.00   Max.   :100.00</code></pre>
+</div>
+<div id="b3-calculate-student-average" class="section level2">
+<h2>B3: Calculate Student Average</h2>
+<pre class="r"><code>students$average &lt;- round(rowMeans(students[, c(&quot;midterm&quot;, &quot;final&quot;)]), 1)
+students</code></pre>
+<pre><code>##   id  name sex section midterm final attendance average
+## 1  1 Alice   F       A      78    82         95    80.0
+## 2  2 Bruno   M       B      85    79         88    82.0
+## 3  3  Chen   M       A      92    96        100    94.0
+## 4  4  Dana   F       C      67    71         72    69.0
+## 5  5  Elif   F       B      74    80         90    77.0
+## 6  6 Farid   M       C      88    91         85    89.5
+## 7  7 Grace   F       A      95    93         98    94.0
+## 8  8  Hiro   M       B      59    65         60    62.0</code></pre>
+</div>
+<div id="b4-logical-column-passed" class="section level2">
+<h2>B4: Logical Column (Passed)</h2>
+<pre class="r"><code>students$passed &lt;- students$average &gt;= 72 &amp; students$attendance &gt;= 75
+students</code></pre>
+<pre><code>##   id  name sex section midterm final attendance average passed
+## 1  1 Alice   F       A      78    82         95    80.0   TRUE
+## 2  2 Bruno   M       B      85    79         88    82.0   TRUE
+## 3  3  Chen   M       A      92    96        100    94.0   TRUE
+## 4  4  Dana   F       C      67    71         72    69.0  FALSE
+## 5  5  Elif   F       B      74    80         90    77.0   TRUE
+## 6  6 Farid   M       C      88    91         85    89.5   TRUE
+## 7  7 Grace   F       A      95    93         98    94.0   TRUE
+## 8  8  Hiro   M       B      59    65         60    62.0  FALSE</code></pre>
+</div>
+<div id="b5-standing-classification" class="section level2">
+<h2>B5: Standing Classification</h2>
+<pre class="r"><code>students$standing &lt;- ifelse(students$average &gt;= 90, &quot;Honors&quot;,
+                     ifelse(students$average &gt;= 75, &quot;Good&quot;, &quot;Needs Support&quot;))
+students</code></pre>
+<pre><code>##   id  name sex section midterm final attendance average passed      standing
+## 1  1 Alice   F       A      78    82         95    80.0   TRUE          Good
+## 2  2 Bruno   M       B      85    79         88    82.0   TRUE          Good
+## 3  3  Chen   M       A      92    96        100    94.0   TRUE        Honors
+## 4  4  Dana   F       C      67    71         72    69.0  FALSE Needs Support
+## 5  5  Elif   F       B      74    80         90    77.0   TRUE          Good
+## 6  6 Farid   M       C      88    91         85    89.5   TRUE          Good
+## 7  7 Grace   F       A      95    93         98    94.0   TRUE        Honors
+## 8  8  Hiro   M       B      59    65         60    62.0  FALSE Needs Support</code></pre>
+</div>
+<div id="b6-custom-classification-function" class="section level2">
+<h2>B6: Custom Classification Function</h2>
+<pre class="r"><code>classify &lt;- function(score) {
+  if (score &gt;= 85) {
+    return(&quot;Distinction&quot;)
+  } else if (score &gt;= 70) {
+    return(&quot;Merit&quot;)
+  } else if (score &gt;= 50) {
+    return(&quot;Pass&quot;)
+  } else {
+    return(&quot;Fail&quot;)
+  }
+}
+
+sapply(c(90, 73, 55, 40), classify)</code></pre>
+<pre><code>## [1] &quot;Distinction&quot; &quot;Merit&quot;       &quot;Pass&quot;        &quot;Fail&quot;</code></pre>
+</div>
+</div>
+<div id="part-c-rbind-and-cbind" class="section level1">
+<h1>Part C: rbind() and cbind()</h1>
+<div id="c1-append-new-students" class="section level2">
+<h2>C1: Append New Students</h2>
+<pre class="r"><code>new_students &lt;- data.frame(
+  id = c(9, 10),
+  name = c(&quot;Ines&quot;, &quot;Jamal&quot;),
+  sex = c(&quot;F&quot;, &quot;M&quot;),
+  section = c(&quot;C&quot;, &quot;A&quot;),
+  midterm = c(81, 70),
+  final = c(84, 68),
+  attendance = c(92, 80),
+  stringsAsFactors = FALSE
+)
+
+# Calculate derived columns to match original structure
+new_students$average &lt;- round(rowMeans(new_students[, c(&quot;midterm&quot;, &quot;final&quot;)]), 1)
+new_students$passed &lt;- new_students$average &gt;= 72 &amp; new_students$attendance &gt;= 75
+new_students$standing &lt;- ifelse(new_students$average &gt;= 90, &quot;Honors&quot;,
+                         ifelse(new_students$average &gt;= 75, &quot;Good&quot;, &quot;Needs Support&quot;))
+
+students_all &lt;- rbind(students, new_students)
+students_all</code></pre>
+<pre><code>##    id  name sex section midterm final attendance average passed      standing
+## 1   1 Alice   F       A      78    82         95    80.0   TRUE          Good
+## 2   2 Bruno   M       B      85    79         88    82.0   TRUE          Good
+## 3   3  Chen   M       A      92    96        100    94.0   TRUE        Honors
+## 4   4  Dana   F       C      67    71         72    69.0  FALSE Needs Support
+## 5   5  Elif   F       B      74    80         90    77.0   TRUE          Good
+## 6   6 Farid   M       C      88    91         85    89.5   TRUE          Good
+## 7   7 Grace   F       A      95    93         98    94.0   TRUE        Honors
+## 8   8  Hiro   M       B      59    65         60    62.0  FALSE Needs Support
+## 9   9  Ines   F       C      81    84         92    82.5   TRUE          Good
+## 10 10 Jamal   M       A      70    68         80    69.0  FALSE Needs Support</code></pre>
+</div>
+<div id="c2-attach-quiz-vector" class="section level2">
+<h2>C2: Attach Quiz Vector</h2>
+<pre class="r"><code>quiz &lt;- c(8, 7, 10, 6, 7, 9, 10, 5, 8, 6)
+students_all &lt;- cbind(students_all, quiz)
+class(students_all)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<pre class="r"><code>students_all</code></pre>
+<pre><code>##    id  name sex section midterm final attendance average passed      standing
+## 1   1 Alice   F       A      78    82         95    80.0   TRUE          Good
+## 2   2 Bruno   M       B      85    79         88    82.0   TRUE          Good
+## 3   3  Chen   M       A      92    96        100    94.0   TRUE        Honors
+## 4   4  Dana   F       C      67    71         72    69.0  FALSE Needs Support
+## 5   5  Elif   F       B      74    80         90    77.0   TRUE          Good
+## 6   6 Farid   M       C      88    91         85    89.5   TRUE          Good
+## 7   7 Grace   F       A      95    93         98    94.0   TRUE        Honors
+## 8   8  Hiro   M       B      59    65         60    62.0  FALSE Needs Support
+## 9   9  Ines   F       C      81    84         92    82.5   TRUE          Good
+## 10 10 Jamal   M       A      70    68         80    69.0  FALSE Needs Support
+##    quiz
+## 1     8
+## 2     7
+## 3    10
+## 4     6
+## 5     7
+## 6     9
+## 7    10
+## 8     5
+## 9     8
+## 10    6</code></pre>
+</div>
+<div id="c3-matrix-with-column-means" class="section level2">
+<h2>C3: Matrix with Column Means</h2>
+<pre class="r"><code>m &lt;- cbind(midterm = students_all$midterm, final = students_all$final)
+m_with_mean &lt;- rbind(m, mean = colMeans(m))
+m_with_mean</code></pre>
+<pre><code>##      midterm final
+##         78.0  82.0
+##         85.0  79.0
+##         92.0  96.0
+##         67.0  71.0
+##         74.0  80.0
+##         88.0  91.0
+##         95.0  93.0
+##         59.0  65.0
+##         81.0  84.0
+##         70.0  68.0
+## mean    78.9  80.9</code></pre>
+</div>
+<div id="c4-handling-mismatched-columns-in-rbind" class="section level2">
+<h2>C4: Handling Mismatched Columns in rbind()</h2>
+<pre class="r"><code># Same number of columns as `students`, but one column name is wrong
+bad &lt;- students[1, ]
+names(bad)[names(bad) == &quot;name&quot;] &lt;- &quot;student_name&quot;
+
+tryCatch(
+  rbind(students, bad),
+  error = function(e) {
+    message(&quot;rbind failed: &quot;, conditionMessage(e))
+    NULL
+  }
+)</code></pre>
+<pre><code>## rbind failed: names do not match previous names</code></pre>
+<pre><code>## NULL</code></pre>
+<p><strong>Explanation:</strong> <code>rbind()</code> requires the data
+frames being combined to have the same number of columns <em>and</em>
+matching column names. When the names differ (e.g.,
+<code>student_name</code> vs <code>name</code>), R cannot match the
+columns and throws an error (“names do not match previous names”). If
+the number of columns differs, it fails with “numbers of columns of
+arguments do not match”.</p>
+</div>
+</div>
+<div id="part-d-subsetting" class="section level1">
+<h1>Part D: Subsetting</h1>
+<div id="d1-extract-name-column" class="section level2">
+<h2>D1: Extract Name Column</h2>
+<pre class="r"><code>students_all$name</code></pre>
+<pre><code>##  [1] &quot;Alice&quot; &quot;Bruno&quot; &quot;Chen&quot;  &quot;Dana&quot;  &quot;Elif&quot;  &quot;Farid&quot; &quot;Grace&quot; &quot;Hiro&quot;  &quot;Ines&quot; 
+## [10] &quot;Jamal&quot;</code></pre>
+<pre class="r"><code>students_all[[&quot;name&quot;]]</code></pre>
+<pre><code>##  [1] &quot;Alice&quot; &quot;Bruno&quot; &quot;Chen&quot;  &quot;Dana&quot;  &quot;Elif&quot;  &quot;Farid&quot; &quot;Grace&quot; &quot;Hiro&quot;  &quot;Ines&quot; 
+## [10] &quot;Jamal&quot;</code></pre>
+<pre class="r"><code>students_all[, &quot;name&quot;]</code></pre>
+<pre><code>##  [1] &quot;Alice&quot; &quot;Bruno&quot; &quot;Chen&quot;  &quot;Dana&quot;  &quot;Elif&quot;  &quot;Farid&quot; &quot;Grace&quot; &quot;Hiro&quot;  &quot;Ines&quot; 
+## [10] &quot;Jamal&quot;</code></pre>
+</div>
+<div id="d2-extract-specific-rows-and-columns" class="section level2">
+<h2>D2: Extract Specific Rows and Columns</h2>
+<pre class="r"><code>students_all[2:5, c(&quot;name&quot;, &quot;midterm&quot;, &quot;final&quot;)]</code></pre>
+<pre><code>##    name midterm final
+## 2 Bruno      85    79
+## 3  Chen      92    96
+## 4  Dana      67    71
+## 5  Elif      74    80</code></pre>
+</div>
+<div id="d3-logical-subsetting-attendance-90" class="section level2">
+<h2>D3: Logical Subsetting (Attendance &gt; 90)</h2>
+<pre class="r"><code>students_all[students_all$attendance &gt; 90, ]</code></pre>
+<pre><code>##   id  name sex section midterm final attendance average passed standing quiz
+## 1  1 Alice   F       A      78    82         95    80.0   TRUE     Good    8
+## 3  3  Chen   M       A      92    96        100    94.0   TRUE   Honors   10
+## 7  7 Grace   F       A      95    93         98    94.0   TRUE   Honors   10
+## 9  9  Ines   F       C      81    84         92    82.5   TRUE     Good    8</code></pre>
+</div>
+<div id="d4-conditional-subsetting-with-subset" class="section level2">
+<h2>D4: Conditional Subsetting with subset()</h2>
+<pre class="r"><code>subset(
+  students_all,
+  sex == &quot;F&quot; &amp; (section == &quot;A&quot; | section == &quot;C&quot;) &amp; final &gt;= 75,
+  select = c(&quot;name&quot;, &quot;section&quot;, &quot;final&quot;)
+)</code></pre>
+<pre><code>##    name section final
+## 1 Alice       A    82
+## 7 Grace       A    93
+## 9  Ines       C    84</code></pre>
+</div>
+<div id="d5-highest-and-lowest-average" class="section level2">
+<h2>D5: Highest and Lowest Average</h2>
+<pre class="r"><code># Highest average
+students_all$name[which.max(students_all$average)]</code></pre>
+<pre><code>## [1] &quot;Chen&quot;</code></pre>
+<pre class="r"><code># Lowest average
+students_all$name[which.min(students_all$average)]</code></pre>
+<pre><code>## [1] &quot;Hiro&quot;</code></pre>
+</div>
+<div id="d6-sort-by-average-top-3" class="section level2">
+<h2>D6: Sort by Average (Top 3)</h2>
+<pre class="r"><code>students_sorted &lt;- students_all[order(-students_all$average), ]
+head(students_sorted, 3)</code></pre>
+<pre><code>##   id  name sex section midterm final attendance average passed standing quiz
+## 3  3  Chen   M       A      92    96        100    94.0   TRUE   Honors   10
+## 7  7 Grace   F       A      95    93         98    94.0   TRUE   Honors   10
+## 6  6 Farid   M       C      88    91         85    89.5   TRUE     Good    9</code></pre>
+</div>
+</div>
+<div id="part-e-basic-factors" class="section level1">
+<h1>Part E: Basic Factors</h1>
+<div id="e1-convert-factor-columns" class="section level2">
+<h2>E1: Convert Factor Columns</h2>
+<pre class="r"><code>students_all$section &lt;- factor(students_all$section)
+students_all$sex &lt;- factor(students_all$sex)
+
+levels(students_all$section)</code></pre>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
+<pre class="r"><code>levels(students_all$sex)</code></pre>
+<pre><code>## [1] &quot;F&quot; &quot;M&quot;</code></pre>
+</div>
+<div id="e2-two-way-frequency-table" class="section level2">
+<h2>E2: Two-way Frequency Table</h2>
+<pre class="r"><code>table(students_all$sex, students_all$section)</code></pre>
+<pre><code>##    
+##     A B C
+##   F 2 1 2
+##   M 2 2 1</code></pre>
+</div>
+<div id="e3-integer-representation-of-factors" class="section level2">
+<h2>E3: Integer Representation of Factors</h2>
+<pre class="r"><code>as.integer(students_all$sex)</code></pre>
+<pre><code>##  [1] 1 2 2 1 1 2 1 2 1 2</code></pre>
+<p><strong>Explanation:</strong> Underneath the labels, R stores factor
+levels as integer codes that follow the alphabetical order of the levels
+(1 for “F” and 2 for “M”).</p>
+</div>
+<div id="e4-labeled-factor-creation" class="section level2">
+<h2>E4: Labeled Factor Creation</h2>
+<pre class="r"><code>sex_label &lt;- factor(students_all$sex, levels = c(&quot;F&quot;, &quot;M&quot;), labels = c(&quot;Female&quot;, &quot;Male&quot;))
+students_all$sex_label &lt;- sex_label
+levels(students_all$sex_label)</code></pre>
+<pre><code>## [1] &quot;Female&quot; &quot;Male&quot;</code></pre>
+</div>
+<div id="e5-summary-and-group-means" class="section level2">
+<h2>E5: Summary and Group Means</h2>
+<pre class="r"><code>summary(students_all$sex_label)</code></pre>
+<pre><code>## Female   Male 
+##      5      5</code></pre>
+<pre class="r"><code># Mean average for Females
+mean(students_all$average[students_all$sex_label == &quot;Female&quot;])</code></pre>
+<pre><code>## [1] 80.5</code></pre>
+<pre class="r"><code># Mean average for Males
+mean(students_all$average[students_all$sex_label == &quot;Male&quot;])</code></pre>
+<pre><code>## [1] 79.3</code></pre>
+</div>
+</div>
 
 
 
